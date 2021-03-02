@@ -1,0 +1,19 @@
+def main():
+    N, M = list(map(int, input().split())) # 카드의 갯수, 근접해야할 합
+    # print("N: {0}    M: {1}".format(N, M))
+    cards = list(map(int, input().split())) # 카드들
+    # print("입력받은 카드들: {0}".format(cards))
+
+    sum = 0
+    length = len(cards)
+
+    for i in range(0, length - 2):
+        for j in range(i + 1,length - 1):
+            for k in range(i + 2, length): # 위 3개의 for문은 중복을 막기 위함이다.
+                result = cards[i] + cards[j] + cards[k]
+                if result <= M: # M보다 작다면
+                    sum = max(sum, result) # 둘 중 큰 값을 sum에 할당하고 계속해서 for문이 끝날 때까지 반복한다.
+    print(sum)
+    return
+
+main()
